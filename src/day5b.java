@@ -69,7 +69,7 @@ public class day5b {
                     arr.set(i, arr.get(index));
                     arr.set(index, temp);
                     seen.clear();
-                    i = -1;
+                    i = -1; // I love inefficiency
                 } else {
                     seen.add(curr);
                 }

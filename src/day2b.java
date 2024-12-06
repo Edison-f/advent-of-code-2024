@@ -31,14 +31,11 @@ public class day2b {
                 return false;
             }
         } else {
-            boolean inc = false;
-            if (skip == 0) {
-                inc = arr[2] > arr[1];
-            } else if (skip == 1) {
-                inc = arr[2] > arr[0];
-            } else {
-                inc = arr[1] > arr[0];
-            }
+            boolean inc = switch (skip) {
+                case 0 -> arr[2] > arr[1];
+                case 1 -> arr[2] > arr[0];
+                default -> arr[1] > arr[0];
+            };
             for (int i = 0; i < arr.length - 1; i++) {
                 if (i == skip - 1) {
                     try {
@@ -65,7 +62,6 @@ public class day2b {
         int result = 0;
         while (in.hasNextLine()) {
             String[] split = in.nextLine().split(" ");
-            boolean safe = false;
             int[] arr = create(split);
             for (int i = -1; i < split.length; i++) {
                 if(possible(arr, i)) {
@@ -73,31 +69,6 @@ public class day2b {
                     break;
                 }
             }
-            continue;
-//            if (Integer.parseInt(split[0]) < Integer.parseInt(split[1])) {
-//                for (int i = 0; i < split.length - 1; i++) {
-//                    int diff = Integer.parseInt(split[i + 1]) - Integer.parseInt(split[i]);
-//                    if (diff > 3 || diff < 1) {
-//                        safe = false;
-//                        break;
-//                    }
-//                }
-//            } else if (Integer.parseInt(split[0]) > Integer.parseInt(split[1])) {
-//                for (int i = 0; i < split.length - 1; i++) {
-//                    int diff = Integer.parseInt(split[i]) - Integer.parseInt(split[i + 1]);
-//                    if (diff > 3 || diff < 1) {
-//                        safe = false;
-//                        break;
-//                    }
-//                }
-//            } else {
-//                safe = false;
-//            }
-//            if (safe) {
-//                result++;
-//            } else {
-//
-//            }
         }
         System.out.println(result);
     }
